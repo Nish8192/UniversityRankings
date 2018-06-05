@@ -1,0 +1,82 @@
+{###########################################################}
+{# Keep structure, implement included flexbox grid library #}
+{###########################################################}
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+<style>
+    @media only screen
+            and (min-device-width: 768px) 
+            and (max-device-width: 1199px) {
+                .add {
+                     margin-top: 15px;
+                }
+            }
+</style>
+
+{% import './macros/showData.njk' as dataDriver %}
+{% set flag = true %}
+
+
+
+    {% macro showData(header, description, badge, rankings) %}
+    <div class="col-lg-9 col-md-12 col-sm-12">
+        <h2>{{ header }}</h2>
+        <p>
+            {{ description }}
+        </p>
+        <div class="box">
+            <div style="display: inline-block;">
+                <img class="badge" src="{{ badge }}" alt="">
+            </div>
+            <div class="col-sm-12" style="display: inline-block;">
+                <ul>
+                {% for ranking in rankings %}
+                <li class="">
+                        <strong>#{{ ranking.rank }}</strong>
+                        <div class="">
+                            <a href="">{{ ranking.institution }}</a>
+                            <div><strong>Location:</strong> {{ ranking.location }}</div>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+
+<div class="row">
+    {{ showData(data.ranking, data.description, data.badge, data.rankings) }}
+    <div class="col-lg-3 center-md col-md-12 col-sm-12">
+        <img class="add" height="250px" width="300px" src="http://placehold.it/600x500?text=dummy+ad">
+    </div>
+    {# <button onclick="{{ ">Toggle Data</button> #}
+</div>
+
+
+{# <div class="col-lg-9 col-md-12 col-sm-12">
+        <h2>{{ data.ranking }}</h2>
+        <p>
+            {{ data.description }}
+        </p>
+        <div class="box">
+            <div style="display: inline-block;">
+                <img class="badge" src="{{ data.badge }}" alt="">
+            </div>
+            <div class="col-sm-12" style="display: inline-block;">
+
+            {% set rankings = data.rankings %}
+                <ul>
+                {% for ranking in rankings %}
+                <li class="">
+                        <strong>#{{ ranking.rank }}</strong>
+                        <div class="">
+                            <a href="">{{ ranking.institution }}</a>
+                            <div><strong>Location:</strong> {{ ranking.location }}</div>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div> #}

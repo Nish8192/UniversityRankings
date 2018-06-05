@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <script src="./node_modules/jquery/dist/jquery.js"></script>
+
+        <title>Webpack App</title>
+    </head>
+    <body>
+        <div id="content"></div>
+        <div id="content2" style="display: none;"></div>
+        <button id="button">Toggle Ranking List</button>
+        <script src="bundle.js"></script>
+    </body>
+</html>
+
+<script>
+    $(document).ready( function() {
+        console.log("Document ready!")
+        $('#button').click(function() {
+            console.log('content1 display: ', $('#content').css('display') )
+            if ( $('#content').css('display') == 'none') {
+                $('#content').show();
+                $('#content2').hide();
+            } else {
+                $('#content2').show();
+                $('#content').hide();
+            }
+        })
+    })
+</script>

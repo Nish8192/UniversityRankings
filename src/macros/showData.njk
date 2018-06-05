@@ -1,0 +1,26 @@
+{% macro showData(header, description, badge, rankings) %}
+    <div class="col-lg-9 col-md-12 col-sm-12">
+        <h2>{{ header }}</h2>
+        <p>
+            {{ description }}
+        </p>
+        <div class="box">
+            <div style="display: inline-block;">
+                <img class="badge" src="{{ badge }}" alt="">
+            </div>
+            <div class="col-sm-12" style="display: inline-block;">
+                <ul>
+                {% for ranking in rankings %}
+                <li class="">
+                        <strong>#{{ ranking.rank }}</strong>
+                        <div class="">
+                            <a href="">{{ ranking.institution }}</a>
+                            <div><strong>Location:</strong> {{ ranking.location }}</div>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
